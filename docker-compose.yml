@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+
+  redis:
+    container_name: dev-redis
+    image: redis:7-alpine
+
+  backend:
+    container_name: dev-backend
+    build: ./backend
+    environment:
+    - MODE=prod
+    volumes:
+      - static:/static
+    command: python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - redis
+
+  frontend:
+    container_name: dev-frontend
+    build: ./frontend
+    volumes:
+    - dist:/frontend/dist/
+    depends_on:
+      - backend
+  
+  webserver:
+    container_name: dev-webserver
+    build: ./nginx
+    volumes:
+    - dist:/frontend/dist/
+    ports:
+    - 3000:3000
+    depends_on:
+    - backend
+    - frontend
+
+volumes:
+  static:
+  dist:
