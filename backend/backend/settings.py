@@ -18,8 +18,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 MODE = environ.get("MODE", default="dev")
 REDIS_HOST = "127.0.0.1" if MODE == "dev" else "redis"
-print(f"Running in {MODE} mode")
-print(f"-  Redis host: {REDIS_HOST}")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -94,8 +92,12 @@ ASGI_APPLICATION = "backend.asgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": environ.get("POSTGRES_DB", "postgres"),
+        "USER": environ.get("POSTGRES_USER", "postgres"),
+        "PASSWORD": environ.get("POSTGRES_PASSWORD"),
+        "HOST": environ.get("POSTGRES_HOST", "localhost"),
+        "PORT": environ.get("POSTGRES_PORT", "5432"),
     }
 }
 

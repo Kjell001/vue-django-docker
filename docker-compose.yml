@@ -5,12 +5,22 @@ services:
   redis:
     container_name: dev-redis
     image: redis:7-alpine
+  
+  db:
+    container_name: dev-db
+    image: postgres:16-alpine
+    environment:
+    - POSTGRES_PASSWORD=poppin_kernels
+    volumes:
+    - postgres_data:/var/lib/postgresql/data/
 
   backend:
     container_name: dev-backend
     build: ./backend
     environment:
     - MODE=prod
+    - POSTGRES_PASSWORD=poppin_kernels
+    - POSTGRES_HOST=db
     volumes:
       - static:/static
     command: python manage.py runserver 0.0.0.0:8000
@@ -23,7 +33,7 @@ services:
     volumes:
     - dist:/frontend/dist/
     depends_on:
-      - backend
+    - backend
   
   webserver:
     container_name: dev-webserver
@@ -39,3 +49,4 @@ services:
 volumes:
   static:
   dist:
+  postgres_data:
