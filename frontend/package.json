@@ -14,31 +14,31 @@
     "hooks": "cd .. && husky frontend/.husky"
   },
   "dependencies": {
-    "date-fns": "^3.6.0",
-    "pinia": "^2.1.7",
-    "prettier-plugin-tailwindcss": "^0.5.14",
-    "vue": "^3.4.23",
-    "vue-router": "^4.3.0"
+    "date-fns": "^4.1.0",
+    "pinia": "^2.2.6",
+    "prettier-plugin-tailwindcss": "^0.6.9",
+    "vue": "^3.5.13",
+    "vue-router": "^4.4.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.0.4",
-    "@vue/eslint-config-prettier": "^9.0.0",
-    "@vue/test-utils": "^2.4.5",
-    "autoprefixer": "^10.4.19",
-    "eslint": "^9.0.0",
-    "eslint-plugin-vue": "^9.25.0",
-    "husky": "^9.0.11",
-    "jsdom": "^24.0.0",
-    "lint-staged": "^15.2.2",
-    "postcss": "^8.4.38",
-    "prettier": "^3.2.5",
-    "tailwindcss": "^3.4.3",
-    "vite": "^5.2.9",
-    "vitest": "^1.5.0"
+    "@vitejs/plugin-vue": "^5.2.0",
+    "@vue/eslint-config-prettier": "^10.1.0",
+    "@vue/test-utils": "^2.4.6",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.15.0",
+    "eslint-plugin-vue": "^9.31.0",
+    "husky": "^9.1.7",
+    "jsdom": "^25.0.1",
+    "lint-staged": "^15.2.10",
+    "postcss": "^8.4.49",
+    "prettier": "^3.3.3",
+    "tailwindcss": "^3.4.15",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.5"
   },
   "lint-staged": {
     "src/**/*.{js,cjs,mjs,vue,html,css}": "prettier --write",
     "src/**/*.{js,cjs,mjs,vue}": "eslint --fix"
   },
-  "packageManager": "yarn@4.1.1"
+  "packageManager": "yarn@4.5.2"
 }
