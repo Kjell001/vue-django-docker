@@ -6,7 +6,7 @@ authors = ["Kjell Boeije <kjellboeije@gmail.com>"]
 readme = "../README.md"
 
 [tool.poetry.dependencies]
-python = "*"
+python = "^3.9"
 django = "*"
 django-rest-framework = "*"
 channels = "*"

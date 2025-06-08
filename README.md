@@ -35,3 +35,13 @@ yarn dev
 docker compose down
 docker compose up --wait
 ```
+
+Access frontend via 
+```bash
+http://localhost:3000
+```
+
+Access backend via 
+```bash
+http://localhost:8000
+```
