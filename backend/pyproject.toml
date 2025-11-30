@@ -1,24 +1,26 @@
-[tool.poetry]
+[project]
 name = "backend"
 version = "0.1.0"
 description = "Boilerplate for Vue and Django with Docker Compose"
-authors = ["Kjell Boeije <kjellboeije@gmail.com>"]
+authors = [{ name = "Kjell Boeije", email = "kjellboeije@gmail.com" }]
+requires-python = ">=3.10,<4"
 readme = "../README.md"
+dependencies = [
+    "django",
+    "django-rest-framework",
+    "channels",
+    "django-cors-headers",
+    "daphne",
+    "channels-redis",
+    "psycopg2-binary",
+]
 
-[tool.poetry.dependencies]
-python = "^3.9"
-django = "*"
-django-rest-framework = "*"
-channels = "*"
-django-cors-headers = "*"
-daphne = "*"
-channels-redis = "*"
-psycopg2-binary = "*"
-
-[tool.poetry.group.dev.dependencies]
-pre-commit = "*"
-black = "*"
+[dependency-groups]
+dev = [
+    "pre-commit",
+    "black",
+]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"

@@ -10,16 +10,16 @@ Run backend:
 ```bash
 cd backend
 # Install dependencies
-poetry install
+uv sync
 # Run redis and postgres containers
-docker run -p 6379:6379 -d redis:7-alpine
+docker run -p 6379:6379 -d --name dev-redis redis:8-alpine 
 export POSTGRES_PASSWORD=poppin_kernels
-docker run -p 5432:5432 -e POSTGRES_PASSWORD=$POSTGRES_PASSWORD -d postgres:16-alpine
+docker run -p 5432:5432 -e POSTGRES_PASSWORD=$POSTGRES_PASSWORD -d --name dev-postgres postgres:18-alpine 
 # Set up database
-poetry run python manage.py migrate
-poetry run python manage.py seed
+uv run python manage.py migrate
+uv run python manage.py seed
 # Run server
-poetry run python manage.py runserver
+uv run python manage.py runserver
 ```
 
 Run frontend:
