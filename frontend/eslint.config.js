@@ -1,12 +1,20 @@
+import { defineConfig } from "eslint/config"
+import globals from "globals"
 import js from "@eslint/js"
 import pluginVue from "eslint-plugin-vue"
 import eslintConfigPrettier from "eslint-config-prettier"
 
-export default [
+export default defineConfig([
   js.configs.recommended,
   ...pluginVue.configs["flat/recommended"],
   eslintConfigPrettier,
   {
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+    },
     rules: {
       "no-unused-vars": [
         "error",
@@ -29,5 +37,5 @@ export default [
       ],
       "vue/component-api-style": ["error", ["script-setup"]],
     },
-  }
-]
+  },
+])
