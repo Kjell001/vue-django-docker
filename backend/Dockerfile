@@ -1,10 +1,10 @@
-FROM python:3.14-alpine AS deps
+FROM python:3.15-alpine AS deps
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
 WORKDIR /deps
 COPY pyproject.toml uv.lock ./
 RUN uv export --frozen --no-dev --no-emit-project -o requirements.txt
 
-FROM python:3.14-alpine
+FROM python:3.15-alpine
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 WORKDIR /backend
